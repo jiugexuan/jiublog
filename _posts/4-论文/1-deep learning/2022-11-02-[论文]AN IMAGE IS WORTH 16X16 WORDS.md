@@ -1,5 +1,5 @@
 ---
-title: 【论文】AN IMAGE IS WORTH 16 × 16 WORDS:TRANSFORMERS FOR IMAGE RECOGNITION AT SCALE 一幅图像值$16 × 16$个字：用于大规模图像识别的TRANSFORMERS
+title: 【论文】AN IMAGE IS WORTH 16 × 16 WORDS:TRANSFORMERS FOR IMAGE RECOGNITION AT SCALE 一幅图像值16 × 16个字：用于大规模图像识别的TRANSFORMERS
 date: 2022-11-02 08:00:00 +/-0800
 categories: [论文,深度学习]
 tags: [深度学习]     # TAG names should always be lowercase 标记名称应始终为小写
