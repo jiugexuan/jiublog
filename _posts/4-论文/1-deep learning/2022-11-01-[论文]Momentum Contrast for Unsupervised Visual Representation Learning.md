@@ -32,7 +32,7 @@ MathJax = {
 </script>
 
 
-\( \sim \)
+\\( \sim \\)
 
 > 对比学习
 > 通过pretext task（代理任务）实现自监督
