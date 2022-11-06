@@ -143,9 +143,9 @@ where \ head_i& = {\rm Attention}(QW^Q_i,KW^K_i,VW^V_i)
 \end{align*}    
 $$
 
-Where the projections are parameter matrices $W_i^Q ∈ \mathbb{R}^{d_{model} \times d_k}$ , $W_i^K \in \mathbb{R}^{d_{model} \times d_k}$ , $W_i^V {\in} \mathbb{R}^{d_{model} \times d_k}$ and $W_i^O ∈ \mathbb{R}^{d_{model} \times d_k}$.
+Where the projections are parameter matrices $W_i^Q \in \mathbb{R}^{d_{model} \times d_k}$ , $W_i^K \in \mathbb{R}^{d_{model} \times d_k}$ , $W_i^V \in \mathbb{R}^{d_{model} \times d_k}$ and $W_i^O \in \mathbb{R}^{d_{model} \times d_k}$.
 
-其中投影是参数矩阵 $W_i^Q ∈ \mathbb{R}^{d_{model} \times d_k}$ , $W_i^K {∈} \mathbb{R}^{d_{model} \times d_k} $ , $W_i^V {∈} \mathbb{R}^{d_{model} \times d_k}$ 和 $W_i^O {∈} \mathbb{R}^{d_{model} \times d_k}$。
+其中投影是参数矩阵 $W_i^Q \in \mathbb{R}^{d_{model} \times d_k}$ , $W_i^K \in \mathbb{R}^{d_{model} \times d_k} $ , $W_i^V \in \mathbb{R}^{d_{model} \times d_k}$ 和 $W_i^O \in \mathbb{R}^{d_{model} \times d_k}$。
 
 In this work we employ $h = 8$ parallel attention layers, or heads. For each of these we use $d_k = d_v = d_{model}/h = 64$. Due to the reduced dimension of each head, the total computational cost is similar to that of single-head attention with full dimensionality.
 
@@ -159,8 +159,8 @@ The Transformer uses multi-head attention in three different ways:
 - 在“编码器-解码器注意力”层中，查询来自前一个解码器层，记忆键和值来自编码器的输出。这允许解码器中的每个位置参与输入序列中的所有位置。这模仿了序列到序列模型中典型的编码器-解码器注意机制，例如 [38,2,9]。
 - The encoder contains self-attention layers. In a self-attention layer all of the keys, values and queries come from the same place, in this case, the output of the previous layer in the encoder. Each position in the encoder can attend to all positions in the previous layer of the encoder.
 - 编码器包含自注意力层。在自注意力层中，所有的键、值和查询都来自同一个地方，在这种情况下，是编码器中前一层的输出。编码器中的每个位置都可以关注编码器上一层中的所有位置。
-- Similarly, self-attention layers in the decoder allow each position in the decoder to attend to all positions in the decoder up to and including that position. We need to prevent leftward information flow in the decoder to preserve the auto-regressive property. We implement this inside of scaled dot-product attention by masking out (setting to -$ \infin $) all values in the input of the softmax which correspond to illegal connections. See Figure 2.
-- 类似地，解码器中的自注意力层允许解码器中的每个位置关注解码器中直到并包括该位置的所有位置。我们需要防止解码器中的信息向左流动，以保持自回归特性。我们通过屏蔽掉（设置为 -$\infin$）softmax 输入中与非法连接对应的所有值，在缩放的点积注意力内部实现这一点。请参见图 2。
+- Similarly, self-attention layers in the decoder allow each position in the decoder to attend to all positions in the decoder up to and including that position. We need to prevent leftward information flow in the decoder to preserve the auto-regressive property. We implement this inside of scaled dot-product attention by masking out (setting to -$ \infty $) all values in the input of the softmax which correspond to illegal connections. See Figure 2.
+- 类似地，解码器中的自注意力层允许解码器中的每个位置关注解码器中直到并包括该位置的所有位置。我们需要防止解码器中的信息向左流动，以保持自回归特性。我们通过屏蔽掉（设置为 -$\infty$）softmax 输入中与非法连接对应的所有值，在缩放的点积注意力内部实现这一点。请参见图 2。
 
 ### 3.3 Position-wise Feed-Forward Networks 位置前馈网络
 
@@ -202,7 +202,7 @@ We also experimented with using learned positional embeddings [9] instead, and f
 
 ## 4 Why Self-Attention 为什么要用自注意机制
 
-In this section we compare various aspects of self-attention layers to the recurrent and convolutional layers commonly used for mapping one variable-length sequence of symbol representations $(x_1,...,x_n)$ to another sequence of equal length $(z_1,..., z_n)$, with $x_i, z_i ∈ \mathbb{R}^d$, such as a hidden layer in a typical sequence transduction encoder or decoder. Motivating our use of self-attention we consider three desiderata.
+In this section we compare various aspects of self-attention layers to the recurrent and convolutional layers commonly used for mapping one variable-length sequence of symbol representations $(x_1,...,x_n)$ to another sequence of equal length $(z_1,..., z_n)$, with $x_i, z_i \in \mathbb{R}^d$, such as a hidden layer in a typical sequence transduction encoder or decoder. Motivating our use of self-attention we consider three desiderata.
 
 One is the total computational complexity per layer. Another is the amount of computation that can be parallelized, as measured by the minimum number of sequential operations required.
 
