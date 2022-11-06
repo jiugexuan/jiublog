@@ -166,7 +166,11 @@ v_{i+1} := 0.9 \cdot v_i - 0.0005 \cdot ϵ \cdot w_i - ϵ \cdot {\left\langle\fr
 w_{i+1} :=w_i+ v_{i+1}
 $$
 
-where $i$ is the iteration index, $v$ is the momentum variable, $ϵ$ is the learning rate, and \({\left\langle\frac{\partial L}{\partial w}{\middle| {w_i}}\right\rangle}_{D_i}\) is the average over the ith batch $D_i$ of the derivative of the objective with respect to $w$, evaluated at $w_i$.
+where $i$ is the iteration index, $v$ is the momentum variable, $ϵ$ is the learning rate, and
+
+$${\left\langle\frac{\partial L}{\partial w}{\middle| {w_i}}\right\rangle}_{D_i}$$ 
+
+is the average over the ith batch $D_i$ of the derivative of the objective with respect to $w$, evaluated at $w_i$.
 
 We initialized the weights in each layer from a zero-mean Gaussian distribution with standard deviation $0.01$. We initialized the neuron biases in the second, fourth, and fifth convolutional layers, as well as in the fully-connected hidden layers, with the constant 1. This initialization accelerates the early stages of learning by providing the ReLUs with positive inputs. We initialized the neuron biases in the remaining layers with the constant $0$.
 
