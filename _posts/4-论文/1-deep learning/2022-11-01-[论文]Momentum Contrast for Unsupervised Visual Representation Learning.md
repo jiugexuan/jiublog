@@ -6,6 +6,16 @@ categories: [论文,深度学习]
 tags: [深度学习]     # TAG names should always be lowercase 标记名称应始终为小写
 ---
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+inlineMath: [['$','$'], ['\\(','\\)']],
+processEscapes: true
+}
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
 > 对比学习
 > 通过pretext task（代理任务）实现自监督
 > 
