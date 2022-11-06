@@ -283,7 +283,7 @@ This paper’s focus is on a mechanism for general contrastive learning; we do n
 
 <div align=center><img src="https://raw.githubusercontent.com/jiugexuan/image-repository/main/Papers/Momentum%20Contrast%20for%20Unsupervised%20Visual%20Representation%20Learning/Table%202.png"/></div>
 
-Table 2. **Object detection fine-tuned on PASCAL VOC** `trainval07+12`. Evaluation is on `test2007:` AP$_{50}$ (default VOC metric), AP (COCO-style), and AP$_{75}$, averaged over 5 trials. All are fine-tuned for 24k iterations (~23 epochs). In the brackets are the gaps to the ImageNet supervised pre-training counterpart. In green are the gaps of at least $+0.5$ point.
+Table 2. **Object detection fine-tuned on PASCAL VOC** `trainval07+12`. Evaluation is on `test2007:` $\rm{AP}_{50}$ (default VOC metric), AP (COCO-style), and $\rm{AP}_{75}$, averaged over 5 trials. All are fine-tuned for 24k iterations (~23 epochs). In the brackets are the gaps to the ImageNet supervised pre-training counterpart. In green are the gaps of at least $+0.5$ point.
 
 <div align =center><img src="https://raw.githubusercontent.com/jiugexuan/image-repository/main/Papers/Momentum%20Contrast%20for%20Unsupervised%20Visual%20Representation%20Learning/Table%203.png"/></div>
 
