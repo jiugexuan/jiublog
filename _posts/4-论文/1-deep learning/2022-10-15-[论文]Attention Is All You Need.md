@@ -182,11 +182,6 @@ Similarly to other sequence transduction models, we use learned embeddings to co
 
 ### 3.5 Positional Encoding 位置编码
 
-  
-
-Table 1: Maximum path lengths, per-layer complexity and minimum number of sequential operations for different layer types. $n$ is the sequence length, $d$ is the representation dimension, $k$ is the kernel size of convolutions and $r$ the size of the neighborhood in restricted self-attention.
-<div align = center><img src="https://raw.githubusercontent.com/jiugexuan/image-repository/main/Papers/Attention-Is-All-You-Need/Table%201.png"/></div>
-
 In this work, we use sine and cosine functions of different frequencies:
 
 $$
@@ -201,6 +196,9 @@ where $pos$ is the position and $i$ is the dimension. That is, each dimension of
 We also experimented with using learned positional embeddings [9] instead, and found that the two versions produced nearly identical results (see Table 3 row (E)). We chose the sinusoidal version because it may allow the model to extrapolate to sequence lengths longer than the ones encountered during training.
 
 ## 4 Why Self-Attention 为什么要用自注意机制
+
+Table 1: Maximum path lengths, per-layer complexity and minimum number of sequential operations for different layer types. $n$ is the sequence length, $d$ is the representation dimension, $k$ is the kernel size of convolutions and $r$ the size of the neighborhood in restricted self-attention.
+<div align = center><img src="https://raw.githubusercontent.com/jiugexuan/image-repository/main/Papers/Attention-Is-All-You-Need/Table%201.png"/></div>
 
 In this section we compare various aspects of self-attention layers to the recurrent and convolutional layers commonly used for mapping one variable-length sequence of symbol representations $(x_1,...,x_n)$ to another sequence of equal length $(z_1,..., z_n)$, with $x_i, z_i \in \mathbb{R}^d$, such as a hidden layer in a typical sequence transduction encoder or decoder. Motivating our use of self-attention we consider three desiderata.
 
