@@ -305,7 +305,7 @@ We perform normalization when fine-tuning supervised and unsupervised pre-traini
 
 **Schedules.** If the fine-tuning schedule is long enough, training detectors from random initialization can be strong baselines, and can match the ImageNet supervised counterpart on COCO [31]. Our goal is to investigate *transferability* of features, so our experiments are on controlled schedules, $e.g.,$ the $1 \times$ (~12 epochs) or $2 \times$ schedules [22] for COCO, in contrast to $6 \times \sim 9 \times$ in [31]. On smaller datasets like VOC, training longer may not catch up [31].
 
-**时间表。**如果微调时间表足够长，从随机初始化训练检测器可以得到强的基线【较好的结果】，并且可以匹配 COCO [31] 上的 ImageNet 监督对应物。 我们的目标是研究特征的*可转移性*，所以我们的实验是在受控的时间表上进行的，$e.g.,$1\times$（~12 epochs）或 $2\times$ 的 COCO 时间表 [22]，与 $6\ 在 [31] 中乘以 \sim 9 \times$。 在 VOC 等较小的数据集上，训练时间可能赶不上 [31]。
+**时间表。**如果微调时间表足够长，从随机初始化训练检测器可以得到强的基线【较好的结果】，并且可以匹配 COCO [31] 上的 ImageNet 监督对应物。 我们的目标是研究特征的*可转移性*，所以我们的实验是在受控的时间表上进行的，如$1\times$（~12 epochs）或 $2\times$ 的 COCO 时间表 [22]，与在 [31] 中$6\ \times \sim 9 \times$相比。 在 VOC 等较小的数据集上，训练时间可能赶不上 [31]。
 
 Nonetheless, in our fine-tuning, MoCo $\underline{uses \ the \ same \ schedule}$ as the ImageNet supervised counterpart, and random initialization results are provided as references.
 
