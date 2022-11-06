@@ -31,9 +31,6 @@ MathJax = {
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
 </script>
 
-
-\\( \sim \\)
-
 > 对比学习
 > 通过pretext task（代理任务）实现自监督
 > 
@@ -337,7 +334,7 @@ Put together, our fine-tuning uses the same setting as the supervised pre-traini
 
 **Setup.** 
 
-The detector is Faster R-CNN [52] with a backbone of R50-dilated-C5 or R50-C4 [32] (details in appendix), with BN tuned, implemented in [60]. We fine-tune all layers end-to-end. The image scale is [480, 800] pixels during training and 800 at inference. The same setup is used for all entries, including the supervised pre-training baseline. We evaluate the default VOC metric of $\rm{AP}_{50}$ ( $i.e.,$ IoU threshold is $50\%$ ) and the more stringent metrics of COCO-style $\rm{AP}$ and $\rm{AP}_{75}$. Evaluation is on the VOC `test2007` set.
+The detector is Faster R-CNN [52] with a backbone of R50-dilated-C5 or R50-C4 [32] (details in appendix), with BN tuned, implemented in [60]. We fine-tune all layers end-to-end. The image scale is [480, 800] pixels during training and 800 at inference. The same setup is used for all entries, including the supervised pre-training baseline. We evaluate the default VOC metric of \\(\rm{AP}_{50}\\) ( $i.e.,$ IoU threshold is $50\%$ ) and the more stringent metrics of COCO-style $\rm{AP}$ and \\(\rm{AP}_{75}\\). Evaluation is on the VOC `test2007` set.
 
 **Ablation: backbones.** Table 2 shows the results fine-tuned on `trainval07+12`  $\sim$ 16.5k images). For R50-dilatedC5 (Table 2a), MoCo pre-trained on IN-1M is comparable to the supervised pre-training counterpart, and MoCo pre-trained on IG-1B *surpasses* it. For R50-C4 (Table 2b),MoCo with IN-1M or IG-1B is *better* than the supervised counterpart: up to $\mathbf{+0.9} \ \rm{AP}_{50}$, $\mathbf{+3.7}$ AP, and $\mathbf{+4.9}$ $\rm{AP}_{75}$.
 
