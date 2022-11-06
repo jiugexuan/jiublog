@@ -107,9 +107,9 @@ In model design we follow the original Transformer (Vaswani et al., 2017) as clo
 Figure 1: Model overview. We split an image into fixed-size patches, linearly embed each of them, add position embeddings, and feed the resulting sequence of vectors to a standard Transformer encoder. In order to perform classification, we use the standard approach of adding an extra learnable “classification token” to the sequence. The illustration of the Transformer encoder was inspired by Vaswani et al. (2017).
 图 1：模型概述。 我们将图像分割成固定大小的块，线性嵌入每个块，添加位置嵌入，并将生成的向量序列馈送到标准的 Transformer 编码器。 为了执行分类，我们使用向序列添加额外可学习的“分类标记”的标准方法。 Transformer 编码器的插图受到 Vaswani 等人的启发。 （2017）。
 
-An overview of the model is depicted in Figure 1. The standard Transformer receives as input a 1D sequence of token embeddings. To handle 2D images, we reshape the image $\mathbf{x} \isin \mathbb{R}^{H \times W \times C}$ into a sequence of flattened 2D patches $\mathbf{x}_p \isin \mathbb{R}^{N \times (P^2 \cdot C)}$, where $(H,W)$ is the resolution of the original image, $C$ is the number of channels, $(P,P)$ is the resolution of each image patch, and $N = HW/P^2$ is the resulting number of patches, which also serves as the effective input sequence length for the Transformer. The Transformer uses constant latent vector size $D$ through all of its layers, so we flatten the patches and map to $D$ dimensions with a trainable linear projection (Eq. 1). We refer to the output of this projection as the patch embeddings.
+An overview of the model is depicted in Figure 1. The standard Transformer receives as input a 1D sequence of token embeddings. To handle 2D images, we reshape the image $\mathbf{x} \in \mathbb{R}^{H \times W \times C}$ into a sequence of flattened 2D patches $\mathbf{x}_p \in \mathbb{R}^{N \times (P^2 \cdot C)}$, where $(H,W)$ is the resolution of the original image, $C$ is the number of channels, $(P,P)$ is the resolution of each image patch, and $N = HW/P^2$ is the resulting number of patches, which also serves as the effective input sequence length for the Transformer. The Transformer uses constant latent vector size $D$ through all of its layers, so we flatten the patches and map to $D$ dimensions with a trainable linear projection (Eq. 1). We refer to the output of this projection as the patch embeddings.
 
-该模型的概述如图 1 所示。标准 Transformer 接收一维词元嵌入序列作为输入。 为了处理 2D 图像，我们将图像 $\mathbf{x} \isin \mathbb{R}^{H \times W \times C}$ 重塑为一系列扁平的 2D patch $\mathbf{x}_p \isin \mathbb{R}^{N \times (P^2 \cdot C)}$，其中$(H,W)$是原始图像的分辨率，$C$是通道数，$(P,P )$ 是每个图像块的分辨率，$N = HW/P^2$ 是生成的块数，它也作为 Transformer 的有效输入序列长度。 Transformer 在其所有层中使用恒定的潜在向量大小 $D$，因此我们将补丁展平并使用可训练的线性投[全连接层]映射到 $D$ 维度（方程式 1）。 我们将此投影的输出称为patch嵌入。[D的维度为$16 \times 16 \times 3$]
+该模型的概述如图 1 所示。标准 Transformer 接收一维词元嵌入序列作为输入。 为了处理 2D 图像，我们将图像 $\mathbf{x} \in \mathbb{R}^{H \times W \times C}$ 重塑为一系列扁平的 2D patch $\mathbf{x}_p \in \mathbb{R}^{N \times (P^2 \cdot C)}$，其中$(H,W)$是原始图像的分辨率，$C$是通道数，$(P,P )$ 是每个图像块的分辨率，$N = HW/P^2$ 是生成的块数，它也作为 Transformer 的有效输入序列长度。 Transformer 在其所有层中使用恒定的潜在向量大小 $D$，因此我们将补丁展平并使用可训练的线性投[全连接层]映射到 $D$ 维度（方程式 1）。 我们将此投影的输出称为patch嵌入。[D的维度为$16 \times 16 \times 3$]
 
 Similar to BERT’s `[class]` token, we prepend a learnable embedding to the sequence of embedded patches ($\mathbf {z^0_0 = x_{class}}$), whose state at the output of the Transformer encoder $ (\mathbf{z}^0_L)$ serves as the image representation $\mathbf y$ (Eq. 4). Both during pre-training and fine-tuning, a classification head is attached to ${\mathbf z}^0_L$. The classification head is implemented by a MLP with one hidden layer at pre-training time and by a single linear layer at fine-tuning time.
 
@@ -129,7 +129,7 @@ MLP 包含两个具有 GELU 非线性的层。
 
 $$
 \begin{align}
-{\mathbf z_0} & = [\mathbf{ x_{class}};{\mathbf x}^1_p{\mathbf E};{\mathbf x}^2_p{\mathbf E};...;{\mathbf x}^N_p{\mathbf E}] + {\mathbf E}_{pos}, & {\mathbf E} \isin \mathbb{R}^{(P^2 \cdot C) \times D}, {\mathbf E}_{pos} \isin \mathbb{R}^{(N+1) \times D}\\
+{\mathbf z_0} & = [\mathbf{ x_{class}};{\mathbf x}^1_p{\mathbf E};{\mathbf x}^2_p{\mathbf E};...;{\mathbf x}^N_p{\mathbf E}] + {\mathbf E}_{pos}, & {\mathbf E} \in \mathbb{R}^{(P^2 \cdot C) \times D}, {\mathbf E}_{pos} \in \mathbb{R}^{(N+1) \times D}\\
 {\mathbf z}'_{\ell} &= {\rm MSA}({\rm LN}(\mathbf {z}_{\ell -1})) + \rm {z}_{\ell -1},&\ell = 1 ... L \\
 {\mathbf z}_{\ell} &= {\rm MLP}({\rm LN}(\mathbf {z}'_{\ell})) + \mathbf{z}_{\ell -1},&\ell = 1 ... L \\
 {\mathbf y} &= {\rm LN}( {\rm z}^0_L)
@@ -395,12 +395,12 @@ Table 3: Hyperparameters for training. All models are trained with a batch size 
 
 ## A MULTIHEAD SELF-ATTENTION
 
-Standard $\mathbf{qkv}$ self-attention (SA, Vaswani et al. (2017)) is a popular building block for neural archi-tectures. For each element in an input sequence ${\rm z} \isin \mathbb{R}^{N \times D}$ , we compute a weighted sum over all values $\mathbf{v}$ in the sequence. The attention weights $A_{ij}$ are based on the pairwise similarity between two elements of the sequence and their respective query $\mathbf{q}^i$ and key $\mathbf{k}^j$ representations.
+Standard $\mathbf{qkv}$ self-attention (SA, Vaswani et al. (2017)) is a popular building block for neural archi-tectures. For each element in an input sequence ${\rm z} \in \mathbb{R}^{N \times D}$ , we compute a weighted sum over all values $\mathbf{v}$ in the sequence. The attention weights $A_{ij}$ are based on the pairwise similarity between two elements of the sequence and their respective query $\mathbf{q}^i$ and key $\mathbf{k}^j$ representations.
 
 $$
 \begin{align}
-[\mathbf{q,k,v}] &= \mathbf{zU}_{qkv}  &\mathbf{U}_{qkv} &\isin \mathbb{R}^{D \times 3D_h}, \\
-A &= {\rm softmax}(\mathbf{qk}^\top/\sqrt{D_h}) &A &\isin \mathbb{R}^{N \times N} \\
+[\mathbf{q,k,v}] &= \mathbf{zU}_{qkv}  &\mathbf{U}_{qkv} &\in \mathbb{R}^{D \times 3D_h}, \\
+A &= {\rm softmax}(\mathbf{qk}^\top/\sqrt{D_h}) &A &\in \mathbb{R}^{N \times N} \\
 SA(\mathbf{z}) &= A\mathbf{v}
 \end{align}
 $$
@@ -408,7 +408,7 @@ $$
 Multihead self-attention (MSA) is an extension of SA in which we run $k$ self-attention operations, called “heads”, in parallel, and project their concatenated outputs. To keep compute and number of parameters constant when changing $k, D_h$ (Eq. 5) is typically set to $D/k$.
 
 $$
-{\rm MSA}(\mathbf{z}) = [{\rm SA}_1(z);{\rm SA}_2(z);...;{\rm SA}_k(z)]\mathbf{U}_{msa} \qquad \mathbf{U}_{msa} \isin \mathbb{R}^{k \cdot D_h \times D} \tag{8}
+{\rm MSA}(\mathbf{z}) = [{\rm SA}_1(z);{\rm SA}_2(z);...;{\rm SA}_k(z)]\mathbf{U}_{msa} \qquad \mathbf{U}_{msa} \in \mathbb{R}^{k \cdot D_h \times D} \tag{8}
 $$
 
 ## B EXPERIMENT DETAILS
