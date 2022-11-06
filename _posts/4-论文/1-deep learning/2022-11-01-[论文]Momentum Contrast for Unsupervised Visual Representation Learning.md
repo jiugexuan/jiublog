@@ -293,7 +293,7 @@ Table 3. **Comparison of three contrastive loss mechanisms** on PASCAL VOC objec
 
 A main goal of unsupervised learning is to *learn features that are transferrable.* ImageNet supervised pre-training is most influential when serving as the initialization for fine-tuning in downstream tasks ($e.g.,$ [21,20,43,52]). Next we compare MoCo with ImageNet supervised pre-training, transferred to various tasks including PASCAL VOC [18], COCO [42], etc. As prerequisites, we discuss two important issues involved [31]: normalization and schedules.
 
-无监督学习的一个主要目标是*学习可转移的特征。* ImageNet 监督预训练在用作下游任务微调的初始化时最具影响力（例如，$ [21,20,43,52] ）。 接下来，我们将 MoCo 与 ImageNet 监督预训练进行比较，迁移到各种任务，包括 PASCAL VOC [18]、COCO [42] 等。作为先决条件，我们讨论涉及的两个重要问题 [31]：归一化和调度。
+无监督学习的一个主要目标是*学习可转移的特征。* ImageNet 监督预训练在用作下游任务微调的初始化时最具影响力（例如， [21,20,43,52] ）。 接下来，我们将 MoCo 与 ImageNet 监督预训练进行比较，迁移到各种任务，包括 PASCAL VOC [18]、COCO [42] 等。作为先决条件，我们讨论涉及的两个重要问题 [31]：归一化和调度。
 
 **Normalization.** As noted in Sec. 4.1, features produced by unsupervised pre-training can have different distributions compared with ImageNet supervised pre-training. But a system for a downstream task often has hyper-parameters ($e.g.,$ learning rates) selected for supervised pre-training. To relieve this problem, we adopt *feature normalization* during fine-tuning: we fine-tune with BN that is trained (and synchronized across GPUs [49]), instead of freezing it by an affine layer [33]. We also use BN in the newly initialized layers ($e.g.,$ FPN [41]), which helps calibrate magnitudes.
 
