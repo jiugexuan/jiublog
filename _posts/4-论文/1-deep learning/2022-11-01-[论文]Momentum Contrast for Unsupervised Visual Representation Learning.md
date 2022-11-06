@@ -4,9 +4,10 @@ title: 【论文】Momentum Contrast for Unsupervised Visual Representation Lear
 date: 2022-11-01 07:00:00 +/-0800
 categories: [论文,深度学习]
 tags: [深度学习]     # TAG names should always be lowercase 标记名称应始终为小写
+mathjax: true
 ---
 
-<script type="text/x-mathjax-config">
+<!-- <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
 tex2jax: {
 inlineMath: [['$','$'], ['\\(','\\)']],
@@ -14,7 +15,7 @@ processEscapes: true
 }
 });
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script> -->
 
 > 对比学习
 > 通过pretext task（代理任务）实现自监督
@@ -319,23 +320,11 @@ Put together, our fine-tuning uses the same setting as the supervised pre-traini
 
 **Setup.** 
 
-The detector is Faster R-CNN [52] with a backbone of R50-dilated-C5 or R50-C4 [32] (details in appendix), with BN tuned, implemented in [60]. We fine-tune all layers end-to-end. The image scale is [480, 800] pixels during training and 800 at inference. The same setup is used for all entries, including the supervised pre-training baseline. We evaluate the default VOC metric of 
-<!--
-$\rm{AP}_{50}$
-( $i.e.,$ IoU threshold is $50\%$ ) and the more stringent metrics of COCO-style 
-$\rm{AP}$
-and 
-$\rm{AP}_{75}$.
-Evaluation is on the VOC `test2007` set.-->
+The detector is Faster R-CNN [52] with a backbone of R50-dilated-C5 or R50-C4 [32] (details in appendix), with BN tuned, implemented in [60]. We fine-tune all layers end-to-end. The image scale is [480, 800] pixels during training and 800 at inference. The same setup is used for all entries, including the supervised pre-training baseline. We evaluate the default VOC metric of $\rm{AP}_{50}$ ( $i.e.,$ IoU threshold is $50\%$ ) and the more stringent metrics of COCO-style $\rm{AP}$ and $\rm{AP}_{75}$. Evaluation is on the VOC `test2007` set.
 
-**Ablation: backbones.** Table 2 shows the results fine-tuned on `trainval07+12` (∼16.5k images). For R50-dilatedC5 (Table 2a), MoCo pre-trained on IN-1M is comparable to the supervised pre-training counterpart, and MoCo pre-trained on IG-1B *surpasses* it. For R50-C4 (Table 2b),MoCo with IN-1M or IG-1B is *better* than the supervised counterpart: up to 
-$\mathbf{+0.9} \ \rm{AP}_{50}$,
-$\mathbf{+3.7}$ 
-AP, and $\mathbf{+4.9}$ 
-$\rm{AP}_{75}$.
+**Ablation: backbones.** Table 2 shows the results fine-tuned on `trainval07+12`  $\sim$ 16.5k images). For R50-dilatedC5 (Table 2a), MoCo pre-trained on IN-1M is comparable to the supervised pre-training counterpart, and MoCo pre-trained on IG-1B *surpasses* it. For R50-C4 (Table 2b),MoCo with IN-1M or IG-1B is *better* than the supervised counterpart: up to $\mathbf{+0.9} \ \rm{AP}_{50}$, $\mathbf{+3.7}$ AP, and $\mathbf{+4.9}$ $\rm{AP}_{75}$.
 
-**消融：主干。** 表 2 显示了在“trainval07+12”（~16.5k 图像）上微调的结果。 对于 R50-dilatedC5（表 2a），在 IN-1M 上预训练的 MoCo 与有监督的预训练对应物相当，并且在 IG-1B 上预训练的 MoCo *超过*它。 对于 R50-C4（表 2b），带有 IN-1M 或 IG-1B 的 MoCo 比有监督的对应物*更好*：高达 $\mathbf{+0.9}$ 
-<!--->$\rm{AP}_{50}$, $\mathbf{+ 3.7}$ AP 和 $\mathbf{+4.9}$ $\rm{AP}_{75}$。-->
+**消融：主干。** 表 2 显示了在“trainval07+12”（~16.5k 图像）上微调的结果。 对于 R50-dilatedC5（表 2a），在 IN-1M 上预训练的 MoCo 与有监督的预训练对应物相当，并且在 IG-1B 上预训练的 MoCo *超过*它。 对于 R50-C4（表 2b），带有 IN-1M 或 IG-1B 的 MoCo 比有监督的对应物*更好*：高达 $\mathbf{+0.9}$ $\rm{AP}_{50}$, $\mathbf{+ 3.7}$ AP 和 $\mathbf{+4.9}$ $\rm{AP}_{75}$。
 
 Interestingly, the transferring accuracy depends on the detector structure. For the C4 backbone, by default used in existing ResNet-based results [14,61,26,66], the advantage of unsupervised pre-training is larger. The relation between pre-training vs. detector structures has been veiled in the past, and should be a factor under consideration.
 
@@ -350,7 +339,7 @@ These competitors perform decently (Table 3). Their AP and AP75 with the C4 back
 Table 4. **Comparison with previous methods on object detection fine-tuned on PASCAL VOC** `trainval2007`. Evaluation is on `test2007`. The ImageNet supervised counterparts are from the respective papers, and are reported as having $the same structure$ as the respective unsupervised pre-training counterparts. All entries are based on the C4 backbone. The models in [14] are R101 v2 [34], and others are R50. The RelPos (relative position) [13] result is the best single-task case in the Multi-task paper [14]. The Jigsaw [45] result is from the ResNet-based implementation in [26]. Our results are with 9k-iteration fine-tuning, averaged over 5 trials. In the brackets are the
 gaps to the ImageNet supervised pre-training counterpart. In green are the gaps of at least $+0.5$ point.
 
-For the ${\rm AP}_{50}$ metric, *no* previous method can catch up with its respective supervised pre-training counterpart. MoCo pre-trained on any of IN-1M, IN-14M (full Ima- geNet), YFCC-100M [55], and IG-1B can *outperform* the supervised baseline. Large gains are seen in the more stringent metrics: up to $\mathbf{+5.2}$ AP and $\mathbf{+9.0}$ ${\rm AP}_{75}$. These gains are larger than the gains seen in `trainval07+12` (Table 2b).
+For the $\rm{AP}_{50}$ metric, *no* previous method can catch up with its respective supervised pre-training counterpart. MoCo pre-trained on any of IN-1M, IN-14M (full Ima- geNet), YFCC-100M [55], and IG-1B can *outperform* the supervised baseline. Large gains are seen in the more stringent metrics: up to $\mathbf{+5.2}$ AP and $\mathbf{+9.0}$ $\rm{AP}_{75}$. These gains are larger than the gains seen in `trainval07+12` (Table 2b).
 
 ### 4.2.2 COCO Object Detection and Segmentation
 
