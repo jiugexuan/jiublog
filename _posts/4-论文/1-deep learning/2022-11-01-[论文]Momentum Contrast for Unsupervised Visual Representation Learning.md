@@ -301,7 +301,7 @@ A main goal of unsupervised learning is to *learn features that are transferrabl
 
 We perform normalization when fine-tuning supervised and unsupervised pre-training models. MoCo $\underline{use \ the \ same \ hyper{-}parameters} $ as the ImageNet supervised counterpart.
 
-我们在微调监督和无监督预训练模型时执行归一化。 MoCo $\underline{使用 \the\same\hyper{-}parameters}$ 作为 ImageNet 监督的对应物。
+我们在微调监督和无监督预训练模型时执行归一化。 MoCo $\underline{使用同样的超参数}$ 作为 ImageNet 监督的对应物。
 
 **Schedules.** If the fine-tuning schedule is long enough, training detectors from random initialization can be strong baselines, and can match the ImageNet supervised counterpart on COCO [31]. Our goal is to investigate *transferability* of features, so our experiments are on controlled schedules, $e.g.,$ the $1 \times$ (~12 epochs) or $2 \times$ schedules [22] for COCO, in contrast to $6 \times \sim 9 \times$ in [31]. On smaller datasets like VOC, training longer may not catch up [31].
 
@@ -336,7 +336,7 @@ These competitors perform decently (Table 3). Their AP and AP75 with the C4 back
 Table 4. **Comparison with previous methods on object detection fine-tuned on PASCAL VOC** `trainval2007`. Evaluation is on `test2007`. The ImageNet supervised counterparts are from the respective papers, and are reported as having $the same structure$ as the respective unsupervised pre-training counterparts. All entries are based on the C4 backbone. The models in [14] are R101 v2 [34], and others are R50. The RelPos (relative position) [13] result is the best single-task case in the Multi-task paper [14]. The Jigsaw [45] result is from the ResNet-based implementation in [26]. Our results are with 9k-iteration fine-tuning, averaged over 5 trials. In the brackets are the
 gaps to the ImageNet supervised pre-training counterpart. In green are the gaps of at least $+0.5$ point.
 
-For the AP$_{50}$ metric, *no* previous method can catch up with its respective supervised pre-training counterpart. MoCo pre-trained on any of IN-1M, IN-14M (full Ima- geNet), YFCC-100M [55], and IG-1B can *outperform* the supervised baseline. Large gains are seen in the more stringent metrics: up to $\mathbf{+5.2}$ AP and $\mathbf{+9.0}$ AP$_{75}$. These gains are larger than the gains seen in `trainval07+12` (Table 2b).
+For the ${\rm AP}_{50}$ metric, *no* previous method can catch up with its respective supervised pre-training counterpart. MoCo pre-trained on any of IN-1M, IN-14M (full Ima- geNet), YFCC-100M [55], and IG-1B can *outperform* the supervised baseline. Large gains are seen in the more stringent metrics: up to $\mathbf{+5.2}$ AP and $\mathbf{+9.0}$ ${\rm AP}_{75}$. These gains are larger than the gains seen in `trainval07+12` (Table 2b).
 
 ### 4.2.2 COCO Object Detection and Segmentation
 
