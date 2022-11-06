@@ -161,10 +161,10 @@ We use dropout in the first two fully-connected layers of Figure 2. Without drop
 
 We trained our models using stochastic gradient descent with a batch size of $128$ examples, momentum of $0.9$, and weight decay of 0.0005. We found that this small amount of weight decay was important for the model to learn. In other words, weight decay here is not merely a regularizer: it reduces the model’s training error. The update rule for weight $w$ was
 
-$
+$$
 v_{i+1} := 0.9 \cdot v_i - 0.0005 \cdot ϵ \cdot w_i - ϵ \cdot {\left\langle\frac{\partial L}{\partial w}\middle|w_i\right\rangle}_{D_i} \\
 w_{i+1} :=w_i+ v_{i+1}
-$
+$$
 
 where $i$ is the iteration index, $v$ is the momentum variable, $ϵ$ is the learning rate, and $ {\left\langle\frac{\partial L}{\partial w}\middle|w_i\right\rangle}_{D_i}$ is the average over the ith batch $D_i$ of the derivative of the objective with respect to $w$, evaluated at $w_i$.
 
