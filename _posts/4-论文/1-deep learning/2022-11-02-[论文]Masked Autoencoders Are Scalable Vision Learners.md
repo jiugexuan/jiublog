@@ -3,22 +3,9 @@ title: 【论文】Masked Autoencoders Are Scalable Vision Learners 带掩码的
 date: 2022-11-02 08:00:00 +/-0800
 categories: [论文,深度学习]
 tags: [深度学习]     # TAG names should always be lowercase 标记名称应始终为小写
+math: true
 ---
 
-
-<script>
-MathJax = {
-  tex: {
-    inlineMath: [['$', '$'], ['\\(', '\\)']]
-  },
-  svg: {
-    fontCache: 'global'
-  }
-};
-</script>
-<script type="text/javascript" id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
-</script>
 
 >auto 模型
 >自回归模型 标号y和样本x来自同一个东西

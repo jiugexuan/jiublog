@@ -3,21 +3,8 @@ title: 【论文】AN IMAGE IS WORTH 16 × 16 WORDS:TRANSFORMERS FOR IMAGE RECOG
 date: 2022-11-01 08:00:00 +/-0800
 categories: [论文,深度学习]
 tags: [深度学习]     # TAG names should always be lowercase 标记名称应始终为小写
+math: true
 ---
-
-<script>
-MathJax = {
-  tex: {
-    inlineMath: [['$', '$'], ['\\(', '\\)']]
-  },
-  svg: {
-    fontCache: 'global'
-  }
-};
-</script>
-<script type="text/javascript" id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
-</script>
 
 > 把图片以16 × 16大小的方格进行裁切
 
