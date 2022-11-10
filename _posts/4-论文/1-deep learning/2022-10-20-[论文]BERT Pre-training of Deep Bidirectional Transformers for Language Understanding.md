@@ -1,5 +1,5 @@
 ---
-title: BERT：Pre-training of Deep Bidirectional Transformers for Language Understanding BERT：用于语言理解的深度双向变换器的预训练
+title: 【论文】BERT：Pre-training of Deep Bidirectional Transformers for Language Understanding BERT：用于语言理解的深度双向变换器的预训练
 date: 2022-10-20 08:00:00 +/-0800
 categories: [论文,深度学习]
 tags: [深度学习]     # TAG names should always be lowercase 标记名称应始终为小写
