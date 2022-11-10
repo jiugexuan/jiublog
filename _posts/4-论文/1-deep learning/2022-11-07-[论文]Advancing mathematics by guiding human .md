@@ -1,6 +1,6 @@
 ---
 title: 【《nature》】Advancing mathematics by guiding human intuition with AI 通过用人工智能引导人类直觉来推进数学的发展
-date: 2022-11-04 07:00:00 +/-0800
+date: 2022-11-07 07:00:00 +/-0800
 categories: [论文,深度学习]
 tags: [深度学习,《nature》]     # TAG names should always be lowercase 标记名称应始终为小写
 math: true
