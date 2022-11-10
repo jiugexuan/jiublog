@@ -98,7 +98,7 @@ The above theorem is one of the first results that connect the algebraic and geo
 <div align=center><img src="https://raw.githubusercontent.com/jiugexuan/image-repository/main/Papers/Advancing%20mathematics%20by%20guiding%20human/Fig%203.png"/></div>
 
 **Fig. 3 | Knot theory attribution. a,** Attribution values for each of the input $X(z)$. The features with high values are those that the learned function is most sensitive to and are probably relevant for further exploration. The 95% confidence interval error bars are across 10 retrainings of the model.**b**, Example visualization of relevant features—the real part of the meridional translation against signature, coloured by the longitudinal translation 
-**a,**每个输入$X(z)$的归属值。值高的特征是那些学习函数最敏感的特征，可能与进一步探索有关。95%的置信区间误差条是在模型的10次再训练中出现的。**b**, 相关特征的可视化示例--经向平移的真实部分与特征的对比，由经向平移的颜色来显示。
+**Fig. 3 | Knot theory attribution.****a,**每个输入$X(z)$的归属值。值高的特征是那些学习函数最敏感的特征，可能与进一步探索有关。95%的置信区间误差条是在模型的10次再训练中出现的。**b**, 相关特征的可视化示例--经向平移的真实部分与特征的对比，由经向平移的颜色来显示。
 
 ## Representation theory 表示论/表征论
 
