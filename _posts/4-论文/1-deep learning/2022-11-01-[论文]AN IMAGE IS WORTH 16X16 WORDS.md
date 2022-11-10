@@ -16,9 +16,7 @@ Georg Heigold, Sylvain Gelly, Jakob Uszkoreit, Neil Houlsby;∗,†
 <div align = center>
 *equal technical contribution, †equal advising
 </div>
-</div>
-<div align = center>Google Research, Brain Team
-</div>
+<div align = center>Google Research, Brain Team</div>
 <div align = center>{adosovitskiy, neilhoulsby}@google.com</div>
 
 ## ABSTRACT 摘要
