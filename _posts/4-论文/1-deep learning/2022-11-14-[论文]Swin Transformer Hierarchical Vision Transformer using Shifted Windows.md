@@ -1,5 +1,5 @@
 ---
-title: 【论文】Swin Transformer: Hierarchical Vision Transformer using Shifted Windows Swin Transformer:使用移动窗口的乘积式的Vision Transformer（SWIN）
+title: 【论文】Swin Transformer：Hierarchical Vision Transformer using Shifted Windows Swin Transformer:使用移动窗口的乘积式的Vision Transformer（SWIN）
 date: 2022-11-14 07:00:00 +/-0800
 categories: [论文,深度学习]
 tags: [深度学习,论文]     # TAG names should always be lowercase 标记名称应始终为小写
