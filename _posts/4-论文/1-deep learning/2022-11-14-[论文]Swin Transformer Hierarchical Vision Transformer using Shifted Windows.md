@@ -49,7 +49,7 @@ self-attention layer to have efficient memory access in practice.
 
 <div align=center><img src="https://raw.githubusercontent.com/jiugexuan/image-repository/main/Papers/Swin%20Transformer%3A%20Hierarchical%20Vision%20Transformer%20using%20Shifted%20Windows/Fig%202.png"/></div>
 
-Figure 2. An illustration of the *shifted window* approach for computing self-attention in the proposed Swin Transformer architecture. In layer $l$ (left), a regular window partitioning scheme is adopted, and self-attention is computed within each window. In the next layer $l + 1$ (right), the window partitioning is shifted, resulting in new windows. The self-attention computation in the new windows crosses the boundaries of the previous windows in layer l, providing connections among them.
+Figure 2. An illustration of the *shifted window* approach for computing self-attention in the proposed Swin Transformer architecture. In layer $l$ (left), a regular window partitioning scheme is adopted, and self-attention is computed within each window. In the next layer $l + 1$ (right), the window partitioning is shifted, resulting in new windows. The self-attention computation in the new windows crosses the boundaries of the previous windows in layer l, providing connections among them. \
 图 2. 在提议的 Swin Transformer 架构中计算自注意力的 *shifted window* 方法的图示。 在层$l$（左）中，采用常规窗口划分方案，并在每个窗口内计算自注意力。 在下一层 $l + 1$（右）中，窗口分区发生了变化，从而产生了新窗口。 新窗口中的自注意力计算跨越了第 l 层中先前窗口的边界，提供了它们之间的连接。【每个灰色的框是一个小的计算单元，规格是$4 \times 4$,每个红色的框是一个中型的计算单元，规格是$70 \times 7$,】
 
 The proposed Swin Transformer achieves strong performance on the recognition tasks of image classification, object detection and semantic segmentation. It outperforms the ViT / DeiT [20,63] and ResNe(X)t models [30,70] significantly with similar latency on the three tasks. Its 58.7 box AP and 51.1 mask AP on the COCO test-dev set surpass the previous state-of-the-art results by +2.7 box AP (Copy-paste [26] without external data) and +2.6 mask AP (DetectoRS [46]). On ADE20K semantic segmentation, it obtains 53.5 mIoU on the val set, an improvement of +3.2 mIoU over the previous state-of-the-art (SETR [81]). It also achieves a top-1 accuracy of 87.3% on ImageNet-1K image classification.
@@ -92,7 +92,7 @@ To produce a hierarchical representation, the number of tokens is reduced by pat
 
 <div align=center><img src="https://raw.githubusercontent.com/jiugexuan/image-repository/main/Papers/Highly%20accurate%20protein%20structure%20prediction/Fig%203-1.png"/></div>
 
-Figure 3. (a) The architecture of a Swin Transformer (Swin-T); (b) two successive Swin Transformer Blocks (notation presented with Eq. (3)). W-MSA and SW-MSA are multi-head self attention modules with regular and shifted windowing configurations, respectively.
+Figure 3. (a) The architecture of a Swin Transformer (Swin-T); (b) two successive Swin Transformer Blocks (notation presented with Eq. (3)). W-MSA and SW-MSA are multi-head self attention modules with regular and shifted windowing configurations, respectively. \
 图 3. (a) Swin Transformer (Swin-T) 的架构； (b) 两个连续的 Swin 变压器块（用公式 (3) 表示的符号）。 W-MSA 和 SW-MSA 是多头自注意力模块，分别具有常规和移位窗口配置。【像披着Transformer皮的卷积神经网络】
 
 > patch partition:大小是4 × 4  
