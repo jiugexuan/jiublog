@@ -113,9 +113,9 @@ DETR infers a fixed-size set of $N$ predictions, in a single pass through the de
 
 DETR推断出一个固定大小的$N$预测集，只需通过一次解码器，其中$N$被设定为明显大于图像中的典型物体数量【输出的框比要预测的物体多很多】。训练的主要困难之一是对预测的对象（类别、位置、大小）进行评分。我们的损失在预测对象和地面真相对象之间产生一个最佳的二分图匹配，然后优化特定对象（边界盒）的损失。
 
-Let us denote by $y$ the ground truth set of objects, and $\hat{y}=\{\hat{y}_i\}^N_{i=1}$ the set of $N$ predictions. Assuming $N$ is larger than the number of objects in the image, we consider $y$ also as a set of size $N$ padded with $∅$ (no object). To nd a bipartite matching between these two sets we search for a permutation of $N$ elements $\sigma \in \mathfrak{S}_N$ with the lowest cost:
+Let us denote by $y$ the ground truth set of objects, and $\hat{y}=\{\hat{y}_i\}^N\_{i=1}$ the set of $N$ predictions. Assuming $N$ is larger than the number of objects in the image, we consider $y$ also as a set of size $N$ padded with $∅$ (no object). To nd a bipartite matching between these two sets we search for a permutation of $N$ elements $\sigma \in \mathfrak{S}\_N$ with the lowest cost:
 
-让我们用 $y$ 表示对象的基本事实集，用 $\hat{y} = \{\hat{y}_i\}^N_{i=1}$ 表示 $N$ 预测集。 假设 $N$ 大于图像中的对象数量，我们将 $y$ 也视为用 $∅$（无对象）填充的大小为 $N$ 的集合。 为了找到这两个集合之间的二分匹配，我们搜索具有最低成本的 $N$ 个元素 $\sigma \in \mathfrak{S}_N$ 的排列：
+让我们用 $y$ 表示对象的基本事实集，用 $\hat{y} = \{\hat{y}_i\}^N\_{i=1}$ 表示 $N$ 预测集。 假设 $N$ 大于图像中的对象数量，我们将 $y$ 也视为用 $∅$（无对象）填充的大小为 $N$ 的集合。 为了找到这两个集合之间的二分匹配，我们搜索具有最低成本的 $N$ 个元素 $\sigma \in \mathfrak{S}\_N$ 的排列：
 
 $$
 \hat{\sigma}= \argmin_{\sigma \in \mathfrak{S}_N} \sum^N_i \mathcal{L}(y_i,\hat{y}_{\sigma(i)}),\tag{1}
@@ -127,7 +127,7 @@ where $\mathcal{L}(y_i,\hat{y}_{\sigma(i)})$ is a pair-wise matching cost betwee
 
 The matching cost takes into account both the class prediction and the similarity of predicted and ground truth boxes. Each element i of the ground truth set can be seen as a $y_i = (c_i,b_i)$ where ci is the target class label (which may be $∅$) and $b_i \in [0,1]^4$ is a vector that defines ground truth box center coordinates and its height and width relative to the image size. For the prediction with index $\sigma(i)$ we define probability of class $c_i$ as $\hat{p}\_{\sigma(i)}(c\_i)$ and the predicted box as $\hat{b}\_{\sigma(i)}$. With these notations we define $\mathcal{L}(y\_i,\hat{y}\_{\sigma(i)})$ as $-{1}\_{\{c_i \neq ∅\}}\hat{p}\_{\sigma(i)}+ 1_{\{c_i \neq ∅\}}\mathcal{L}\_{\rm box} (b_i,\hat{b}\_{\hat{\sigma}(i)})$.
 
-匹配成本考虑了类别预测以及预测框和地面真值框的相似性。 ground truth 集合的每个元素 i 都可以看作是 $y_i = (c_i,b_i)$ 其中 ci 是目标类标签（可能是 $∅$）和 $b_i \in [0,1]^4$ 是一个向量，它定义了地面实况框中心坐标及其相对于图像大小的高度和宽度。 对于索引为 $\sigma(i)$ 的预测，我们将类别 $c_i$ 的概率定义为 $\hat{p}_{\sigma(i)}(c_i)$ 并将预测框定义为 $\hat{b} _{\sigma (i)}$。 使用这些符号，我们将 $\mathcal{L}(y_i,\hat{y}\_{\sigma(i)})$ 定义为 $-{1}\_{\{c_i \neq ∅\}}\hat{p }\_{\sigma(i)}+ 1_{\{c_i \neq ∅\}}\mathcal{L}_{\rm box} (b_i,\hat{b}\_{\hat{\sigma}(i )})$。【前面一项是分类对不对，后面一项是框准不准】
+匹配成本考虑了类别预测以及预测框和地面真值框的相似性。 ground truth 集合的每个元素 i 都可以看作是 $y_i = (c_i,b_i)$ 其中 ci 是目标类标签（可能是 $∅$）和 $b_i \in [0,1]^4$ 是一个向量，它定义了地面实况框中心坐标及其相对于图像大小的高度和宽度。 对于索引为 $\sigma(i)$ 的预测，我们将类别 $c_i$ 的概率定义为 $\hat{p}\_{\sigma(i)}(c_i)$ 并将预测框定义为 $\hat{b}\_{\sigma (i)}$。 使用这些符号，我们将 $\mathcal{L}(y_i,\hat{y}\_{\sigma(i)})$ 定义为 $-{1}\_{\{c_i \neq ∅\}}\hat{p }\_{\sigma(i)}+ 1\_{\{c_i \neq ∅\}}\mathcal{L}\_{\rm box} (b_i,\hat{b}\_{\hat{\sigma}(i)})$。【前面一项是分类对不对，后面一项是框准不准】
 
 This procedure of finding matching plays the same role as the heuristic assignment rules used to match proposal [37] or anchors [22] to ground truth objects in modern detectors. The main difference is that we need to find one-to-one matching for direct set prediction without duplicates.
 
