@@ -228,7 +228,7 @@ Similarly to visualizing encoder attention, we visualize decoder attentions in F
 
 <div align=center><img src="https://raw.githubusercontent.com/jiugexuan/image-repository/main/Papers/End-to-End%20Object%20Detection%20with%20Transformers(DETR)/Fig%204.png"/></div>
 
-Fig. 4: $\text{AP}$ and $\text{AP}_{50}$ performance after each decoder layer. A single long schedule baseline model is evaluated. DETR does not need NMS by design, which is validated by this figure. NMS lowers $\text{AP}$ in the final layers, removing TP predictions, but improves $\text{AP}$ in the first decoder layers, removing double predictions, as there is no communication in the first layer, and slightly improves $\text{AP}_{50}$.
+Fig. 4: $\text{AP}$ and $\text{AP}\_{50}$ performance after each decoder layer. A single long schedule baseline model is evaluated. DETR does not need NMS by design, which is validated by this figure. NMS lowers $\text{AP}$ in the final layers, removing TP predictions, but improves $\text{AP}$ in the first decoder layers, removing double predictions, as there is no communication in the first layer, and slightly improves $\text{AP}\_{50}$.
 
 <div align=center><img src="https://raw.githubusercontent.com/jiugexuan/image-repository/main/Papers/End-to-End%20Object%20Detection%20with%20Transformers(DETR)/Fig%205.png"/></div>
 
