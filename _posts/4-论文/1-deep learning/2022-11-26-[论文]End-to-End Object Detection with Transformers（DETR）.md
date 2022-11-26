@@ -434,7 +434,7 @@ $$
 \mathcal{L}_{\rm iou}(b_{\sigma(i)},\hat{b}_i) = 1 - (\frac{|b_{\sigma(i)} \cap \hat{b}_i|}{|b_{\sigma(i)} \cup \hat{b}_i|} - \frac{|{B(b_{\sigma(i)},\hat{b}_i)}\backslash {b_{\sigma(i)} \cup \hat{b}_i}|}{|B(b_{\sigma(i)},\hat{b}_i)|}). \tag{11}
 $$
 
-$\vert.\vert$ means “area”, and the union and intersection of box coordinates are used as shorthands for the boxes themselves. The areas of unions or intersections are computed by min/max of the linear functions of $b_{\sigma(i)}$ and $\hat{b}_{i}$, which makes the loss suciently well-behaved for stochastic gradients. $B(b_{\sigma(i)},\hat{b}_i)$ means the largest box containing $b_{\sigma(i)},\hat{b}_i$ (the areas involving $B$ are also computed based on min/max of linear functions of the box coordinates).
+$\vert.\vert$ means “area”, and the union and intersection of box coordinates are used as shorthands for the boxes themselves. The areas of unions or intersections are computed by min/max of the linear functions of $b_{\sigma(i)}$ and \$\hat{b}_{i}\$, which makes the loss suciently well-behaved for stochastic gradients. \$B(b_{\sigma(i)},\hat{b}_i)\$ means the largest box containing \$b_{\sigma(i)},\hat{b}_i\$ (the areas involving $B$ are also computed based on min/max of linear functions of the box coordinates).
 
 **DICE/F-1 loss** [28] The DICE coecient is closely related to the Intersection over Union. If we denote by m the raw mask logits prediction of the model, and $m$ the binary target mask, the loss is dened as:
 
