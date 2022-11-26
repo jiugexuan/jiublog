@@ -113,7 +113,7 @@ DETR infers a fixed-size set of $N$ predictions, in a single pass through the de
 
 DETR推断出一个固定大小的$N$预测集，只需通过一次解码器，其中$N$被设定为明显大于图像中的典型物体数量【输出的框比要预测的物体多很多】。训练的主要困难之一是对预测的对象（类别、位置、大小）进行评分。我们的损失在预测对象和地面真相对象之间产生一个最佳的二分图匹配，然后优化特定对象（边界盒）的损失。
 
-Let us denote by $y$ the ground truth set of objects, and $\hat{y} = \{\hat{y}_i\}^N_{i=1}$ the set of $N$ predictions. Assuming $N$ is larger than the number of objects in the image, we consider $y$ also as a set of size $N$ padded with $∅$ (no object). To nd a bipartite matching between these two sets we search for a permutation of $N$ elements $\sigma \in \mathfrak{S}_N$ with the lowest cost:
+Let us denote by $y$ the ground truth set of objects, and $\hat{y}=\{\hat{y}_i\}^N_{i=1}$ the set of $N$ predictions. Assuming $N$ is larger than the number of objects in the image, we consider $y$ also as a set of size $N$ padded with $∅$ (no object). To nd a bipartite matching between these two sets we search for a permutation of $N$ elements $\sigma \in \mathfrak{S}_N$ with the lowest cost:
 
 让我们用 $y$ 表示对象的基本事实集，用 $\hat{y} = \{\hat{y}_i\}^N_{i=1}$ 表示 $N$ 预测集。 假设 $N$ 大于图像中的对象数量，我们将 $y$ 也视为用 $∅$（无对象）填充的大小为 $N$ 的集合。 为了找到这两个集合之间的二分匹配，我们搜索具有最低成本的 $N$ 个元素 $\sigma \in \mathfrak{S}_N$ 的排列：
 
