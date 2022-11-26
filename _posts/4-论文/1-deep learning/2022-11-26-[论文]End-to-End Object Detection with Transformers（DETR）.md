@@ -118,7 +118,7 @@ Let us denote by $y$ the ground truth set of objects, and $\hat{y}=\{\hat{y}_i\}
 让我们用 $y$ 表示对象的基本事实集，用 $\hat{y} = \{\hat{y}_i\}^N\_{i=1}$ 表示 $N$ 预测集。 假设 $N$ 大于图像中的对象数量，我们将 $y$ 也视为用 $∅$（无对象）填充的大小为 $N$ 的集合。 为了找到这两个集合之间的二分匹配，我们搜索具有最低成本的 $N$ 个元素 $\sigma \in \mathfrak{S}\_N$ 的排列：
 
 $$
-\hat{\sigma}= \mathop{\rm arg \ min}\limits _{\sigma \in \mathfrak{S}_N} \sum^N_i \mathcal{L}(y_i,\hat{y}_{\sigma(i)}),\tag{1}
+\hat{\sigma}= \mathop{\rm arg \ min}\limits_{\sigma \in \mathfrak{S}_N} \sum^N_i \mathcal{L}(y_i,\hat{y}_{\sigma(i)}),\tag{1}
 $$
 
 where $\mathcal{L}(y_i,\hat{y}_{\sigma(i)})$ is a pair-wise matching cost between ground truth $y_i$ and a prediction with index $\sigma(i)$. This optimal assignment is computed efficiently with the Hungarian algorithm, following prior work (e.g . [43]).
