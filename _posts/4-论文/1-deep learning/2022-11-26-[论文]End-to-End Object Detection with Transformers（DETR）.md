@@ -414,7 +414,7 @@ $$
 \alpha_{i,j}=\frac{e^{\frac{1}{\sqrt{d'}}Q^T_iK_j}}{Z_i} \ \text{where} \ Z_i=\sum_{j=1}^{N_{\rm kv}}{e^{\frac{1}{\sqrt{d'}}Q^T_iK_j}} \tag{8}
 $$
 
-In our case, the positional encodings may be learnt or fixed, but are shared across all attention layers for a given query/key-value sequence, so we do not explicitly write them as parameters of the attention. We give more details on their exact value when describing the encoder and the decoder. The final output is the aggregation of values weighted by attention weights: The $i$-th row is given by ${{\rm attn}_i(X_{\rm q},X_{\rm kv},T')=\sum_{j=1}^{N_{\rm kv}}a_{i,j}V_j}$ .
+In our case, the positional encodings may be learnt or fixed, but are shared across all attention layers for a given query/key-value sequence, so we do not explicitly write them as parameters of the attention. We give more details on their exact value when describing the encoder and the decoder. The final output is the aggregation of values weighted by attention weights: The $i$-th row is given by ${\text{attn}_i(X_{\rm q},X_{\rm kv},T')=\sum_{j=1}^{N_{\rm kv}}a_{i,j}V_j}$ .
 
 **Feed-forward network (FFN) layers** The original transformer alternates multi-head attention and so-called FFN layers [47], which are eectively multilayer $1\times1$ convolutions, which have Md input and output channels in our case. The FFN we consider is composed of two-layers of $1\times1$ convolutions with ReLU activations. There is also a residual connection/dropout/layernorm after the two layers, similarly to equation 6.
 
