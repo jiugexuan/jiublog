@@ -47,14 +47,13 @@ Recent progress in computer vision has been driven by scaling models on large da
 计算机视觉的最新进展是由从互联网收集的带标题的图像的大型数据集上的扩展模型所驱动的 [10,44,60,39,31,16]。 在这个框架内，CLIP [39] 已经成为一个成功的图像表示学习器。 CLIP 嵌入具有许多理想的特性：它们对图像分布偏移具有鲁棒性，具有令人印象深刻的零样本能力，并且经过微调以在各种视觉和语言任务上实现最先进的结果 [45]。 同时，扩散模型 [46,48,25] 已成为一种很有前途的生成建模框架，推动了图像和视频生成任务的最新技术发展 [11,26,24]。为了获得最佳结果，扩散模型利用引导技术 [11,24]，以牺牲样本多样性为代价提高样本保真度（对于图像，照片级真实感）。
 
 >扩散模型的发展历程
+
 ```mermaid
 graph LR
 subgraph 主线 
 1[DDPM]-->2[improve DDPM]-->3[Diffusion Models beats GAN]-->4[Glide]-->5[DALIE2]
 end
-
 6[classfier free guidance]-->4
-
 ```
 
 <div align=center><img src="https://raw.githubusercontent.com/jiugexuan/image-repository/main/Papers/Hierarchical%20Text-Conditional%20Image%20Generation%20with%20CLIP%20Latents/Fig%201.png"/></div>
