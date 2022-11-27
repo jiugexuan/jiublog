@@ -129,17 +129,17 @@ Our training dataset consists of pairs $(x,y)$ of images $x$ and their correspon
 - A *decoder* $P(x  \vert z_i,y)$ that produces images $x$ conditioned on CLIP image embeddings $z_i$ (and optionally text captions $y$). \
 一个*解码器*$P(x \vert z_i,y)$，产生以CLIP图像特征$z_i$为条件的图像$x$（和可选的文本标题$y$）
 
-The decoder allows us to invert images given their CLIP image embeddings, while the prior allows us to learn a generative model of the image embeddings themselves. Stacking these two components yields a generative model $P(x|y)$ of images $x$ given captions $y$:
+The decoder allows us to invert images given their CLIP image embeddings, while the prior allows us to learn a generative model of the image embeddings themselves. Stacking these two components yields a generative model $P(x \vert y)$ of images $x$ given captions $y$:
 
-解码器允许我们根据CLIP图像特征来反转图像，而先验（prior）允许我们学习图像特征本身的生成模型。将这两个部分叠加起来，就会产生一个图像$x$的生成模型$P(x|y)$，并给出标题$y$。
+解码器允许我们根据CLIP图像特征来反转图像，而先验（prior）允许我们学习图像特征本身的生成模型。将这两个部分叠加起来，就会产生一个图像$x$的生成模型$P(x \vert y)$，并给出标题$y$。
 
 $$
 P(x|y) = P(x,z_i|y) = P(x|z_i,y)P (z_i|y).
 $$
 
-The first equality holds because $z_i$ is a deterministic function of $x$. The second equality holds because of the chain rule. Thus, we can sample from the true conditional distribution $P(x|y)$ by first sampling $z_i$ using the prior, and then sampling $x$ using the decoder. In the following sections, we describe our decoder and prior stacks. For training details and hyperparameters, refer to Appendix C.
+The first equality holds because $z_i$ is a deterministic function of $x$. The second equality holds because of the chain rule. Thus, we can sample from the true conditional distribution $P(x \vert y)$ by first sampling $z_i$ using the prior, and then sampling $x$ using the decoder. In the following sections, we describe our decoder and prior stacks. For training details and hyperparameters, refer to Appendix C.
 
-第一个等式成立是因为 $z_i$ 是 $x$ 的确定性函数（一对一的关系）。 由于链式法则，第二个等式成立。 因此，我们可以通过首先使用先验对 $z_i$ 进行采样，然后使用解码器对 $x$ 进行采样，从真实条件分布 $P(x|y)$ 进行采样。 在以下部分中，我们将描述我们的解码器和先前的堆栈。 有关训练详细信息和超参数，请参阅附录 C。【通过概率证明两阶段设计是有证据的】
+第一个等式成立是因为 $z_i$ 是 $x$ 的确定性函数（一对一的关系）。 由于链式法则，第二个等式成立。 因此，我们可以通过首先使用先验对 $z_i$ 进行采样，然后使用解码器对 $x$ 进行采样，从真实条件分布 $P(x \vert y)$ 进行采样。 在以下部分中，我们将描述我们的解码器和先前的堆栈。 有关训练详细信息和超参数，请参阅附录 C。【通过概率证明两阶段设计是有证据的】
 
 ### 2.1 Decoder 解码器
 
