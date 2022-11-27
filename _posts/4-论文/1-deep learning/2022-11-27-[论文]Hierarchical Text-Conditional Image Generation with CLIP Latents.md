@@ -124,10 +124,10 @@ Our training dataset consists of pairs $(x,y)$ of images $x$ and their correspon
 
 我们的训练数据集由一对$(x,y)$的图像$x$和它们相应的标题$y$组成。给定一个图像$x$，让$z_i$和$z_t$分别为其CLIP图像和文本特征。我们设计了我们的生成堆栈，使用两个组件从标题中产生图像。
 
-- A *prior* $P(z_i|y)$ that produces CLIP image embeddings $z_i$ conditioned on captions $y$. \
-一个*先验的*$P(z_i|y)$，产生CLIP图像特征$z_i$，以标题$y$为条件。
-- A *decoder* $P(x|z_i,y)$ that produces images $x$ conditioned on CLIP image embeddings $z_i$ (and optionally text captions $y$). \
-一个*解码器*$P(x|z_i,y)$，产生以CLIP图像特征$z_i$为条件的图像$x$（和可选的文本标题$y$）
+- A *prior* $P(z_i \vert y)$ that produces CLIP image embeddings $z_i$ conditioned on captions $y$. \
+一个*先验的*$P(z_i\vert y)$，产生CLIP图像特征$z_i$，以标题$y$为条件。
+- A *decoder* $P(x  \vert z_i,y)$ that produces images $x$ conditioned on CLIP image embeddings $z_i$ (and optionally text captions $y$). \
+一个*解码器*$P(x \vert z_i,y)$，产生以CLIP图像特征$z_i$为条件的图像$x$（和可选的文本标题$y$）
 
 The decoder allows us to invert images given their CLIP image embeddings, while the prior allows us to learn a generative model of the image embeddings themselves. Stacking these two components yields a generative model $P(x|y)$ of images $x$ given captions $y$:
 
@@ -162,7 +162,7 @@ While a decoder can invert CLIP image embeddings $z_i$ to produce images $x$, we
 虽然解码器可以反转 CLIP 图像特征 $z_i$ 以生成图像 $x$，但我们需要一个先验模型从标题 $y$ 生成 $z_i$ 以启用从文本标题生成图像。 我们为先前的模型探索了两个不同的模型类：
 
 - *Autoregressive* (AR) prior: the CLIP image embedding $z_i$ is converted into a sequence of discrete codes and predicted autoregressively conditioned on the caption $y$. \
-- *自回归* (AR) 先验：嵌入 $z_i$ 的 CLIP 图像被转换为一系列离散代码，并根据标题 $y$ 进行自回归预测。
+*自回归* (AR) 先验：嵌入 $z_i$ 的 CLIP 图像被转换为一系列离散代码，并根据标题 $y$ 进行自回归预测。
 - *Diffusion* prior: The continuous vector $z_i$ is directly modelled using a Gaussian diffusion model conditioned on the caption $y$. \
 *扩散*先验：连续向量 $z_i$ 直接使用以标题 $y$ 为条件的高斯扩散模型建模。
 
